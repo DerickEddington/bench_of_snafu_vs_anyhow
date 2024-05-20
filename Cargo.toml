@@ -1,0 +1,32 @@
+[package]
+name = "bench_of_snafu_vs_anyhow"
+publish = false
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version = "1.66"
+
+[features]
+default = ["noisy_PC"]
+noisy_PC = []  # Don't use if wanting to notice minor effects on performance.
+
+[dependencies]
+anyhow.workspace = true
+snafu.workspace = true
+criterion.workspace = true
+my_whatever.workspace = true
+
+[workspace]
+
+[workspace.package]
+version = "0.0.1"
+edition = "2021"
+license = "Unlicense"
+
+[workspace.dependencies]
+anyhow = "1"
+snafu = "0.8"
+# From GitHub, to use latest commits to it.
+criterion = { version = "0.5", git = "https://github.com/bheisler/criterion.rs.git" }
+# Our own packages, for use by our own packages.
+my_whatever = { path = "my_whatever" }
